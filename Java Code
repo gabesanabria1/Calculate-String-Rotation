@@ -1,0 +1,24 @@
+public class CalculateRotation {
+  static int shiftedDiff(String first, String second){
+    if(first.equals(second))
+    return 0;  
+  
+    int counter = 1;
+    return shiftedDiffHelper(first, second, counter);
+  }
+  
+  //Helper to recursively shift string
+  static int shiftedDiffHelper(String first, String second, int counter){
+    
+    int lastCharIndex = first.length()-1;
+    String rotated = first.charAt(lastCharIndex)+first.substring(0,lastCharIndex);
+    
+    if (rotated.equals(second))
+      return counter;
+    else if (counter != first.length()){
+      counter++;
+      return shiftedDiffHelper(rotated, second, counter);
+    }
+    else return -1;
+  }
+}
